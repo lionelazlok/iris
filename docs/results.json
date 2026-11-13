@@ -1,0 +1,67 @@
+{
+  "dataset": {
+    "type": "synthétique",
+    "subjects": 50,
+    "sessions": 4
+  },
+  "extraction": {
+    "images": 200,
+    "failure_to_enroll": 0,
+    "mean_ms": 23.4,
+    "p95_ms": 29.6
+  },
+  "matching": {
+    "genuine_pairs": 300,
+    "impostor_pairs": 2450,
+    "genuine_hd_mean": 0.1471,
+    "genuine_hd_max": 0.361,
+    "impostor_hd_mean": 0.4795,
+    "impostor_hd_min": 0.4349,
+    "decidability_dprime": 14.48,
+    "eer": 0.0,
+    "eer_threshold": 0.361,
+    "at_threshold": {
+      "0.3": {
+        "FAR": 0.0,
+        "FRR": 0.006666666666666667
+      },
+      "0.32": {
+        "FAR": 0.0,
+        "FRR": 0.006666666666666667
+      },
+      "0.34": {
+        "FAR": 0.0,
+        "FRR": 0.0033333333333333335
+      },
+      "0.36": {
+        "FAR": 0.0,
+        "FRR": 0.0033333333333333335
+      },
+      "0.4": {
+        "FAR": 0.0,
+        "FRR": 0.0
+      }
+    }
+  },
+  "rotation_mean_hd": {
+    "0": 0.1379,
+    "4": 0.1384,
+    "8": 0.1709,
+    "12": 0.3157,
+    "16": 0.3665,
+    "20": 0.401
+  },
+  "security_cost": {
+    "iriscode_bits": 9600,
+    "serialized_bytes": 2409,
+    "stored_bytes_encrypted": 2497,
+    "storage_overhead_bytes": 88,
+    "encrypt_us": 6.6,
+    "decrypt_us": 4.4,
+    "cancelable_transform_ms": 0.19,
+    "match_17_shifts_ms": 0.5,
+    "extraction_ms": 23.4,
+    "crypto_share_of_verification_pct": 0.018
+  },
+  "cancelable_score_deviation_max": 0.0
+}
