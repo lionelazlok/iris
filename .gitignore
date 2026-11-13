@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+# Données d'exécution et secrets : ne jamais versionner
+data/*.db
+data/*.json
+data/*.key
+data/*.tmp
+data/synthetic/
+.streamlit/secrets.toml
+docs/*.zip

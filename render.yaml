@@ -1,0 +1,13 @@
+# Déploiement Render (render.com) : New > Blueprint > choisir ce dépôt
+services:
+  - type: web
+    name: iris-secure-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: IRIS_MASTER_KEY
+        generateValue: false
+        sync: false          # à saisir dans le tableau de bord (32 octets en base64)
+      - key: IRIS_API_KEYS
+        sync: false          # ex. "cleAdmin:admin,cleOp:operator,cleAudit:auditor"
