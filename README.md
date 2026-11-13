@@ -334,7 +334,7 @@ streamlit run streamlit_app.py          # → http://localhost:8501
 | ④ Administration | Key rotation, revocation, re-enrollment, erasure |
 | ⑤ Audit | Full log + chain status (intact or broken) |
 | ⑥ Attaques (Attacks) | Tamper with a template, swap templates, forge the log, reset |
-| ℹ️ À propos (About) | Explanations and raw results |
+| À propos (About) | Explanations and raw results |
 
 The role is chosen in the sidebar. The interface labels are in French. **Same person + different capture** ⇒ accepted; **different person** ⇒ rejected.
 

@@ -103,7 +103,7 @@ def subjects():
 
 # ------------------------------------------------------------------ Onglets
 st.title("Sécurisation d'une base de données biométrique à iris")
-tabs = st.tabs(["① Enrôlement", "② Vérification", "③ Base de données", "④ Administration", "⑤ Audit", "⑥ Attaques", "ℹ️ À propos"])
+tabs = st.tabs(["① Enrôlement", "② Vérification", "③ Base de données", "④ Administration", "⑤ Audit", "⑥ Attaques", "À propos"])
 
 with tabs[0]:
     st.subheader("Enregistrer une personne")
@@ -167,7 +167,7 @@ with tabs[3]:
                 st.success(f"{r['old_kek']} → {r['new_kek']} · {r['templates_rewrapped']} gabarit(s) rechiffré(s)")
     with c2:
         refs = subjects()["pseudonyme"].tolist()
-        target = st.selectbox("Personne", refs) if refs else None
+        target = st.selectbox("Personne", refs, index=0, key=f"adm_{'-'.join(refs)}") if refs else None
         b1, b2 = st.columns(2)
         if b1.button("Révoquer le gabarit", disabled=not target):
             r = run(svc.revoke, target)
@@ -204,7 +204,7 @@ with tabs[5]:
     c1, c2, c3 = st.columns(3)
     with c1:
         st.markdown("**1. Altérer un gabarit**")
-        v = st.selectbox("Victime", refs, key="a1") if refs else None
+        v = st.selectbox("Victime", refs, index=0, key=f"a1_{'-'.join(refs)}") if refs else None
         if st.button("Inverser un octet du chiffré", disabled=not v):
             with sqlite3.connect(DB_FILE) as con:
                 tid, ct = con.execute("select t.id, t.ciphertext from templates t join subjects s on s.id=t.subject_id "
@@ -214,8 +214,12 @@ with tabs[5]:
             st.warning(f"Gabarit de {v} altéré. Lancez une vérification : une alerte d'intégrité doit apparaître.")
     with c2:
         st.markdown("**2. Substituer un gabarit**")
-        v2 = st.selectbox("Victime", refs, key="a2") if refs else None
-        att = st.selectbox("Attaquant", [r for r in refs if r != v2], key="a3") if refs else None
+        v2 = st.selectbox("Victime", refs, index=0, key=f"a2_{'-'.join(refs)}") if refs else None
+        others = [r for r in refs if r != v2]
+        att = st.selectbox("Attaquant", others, index=0 if others else None,
+                           key=f"a3_{v2}_{'-'.join(others)}") if others else None
+        if refs and not others:
+            st.caption("Enrôlez au moins deux personnes pour cette attaque.")
         if st.button("Copier le gabarit de l'attaquant chez la victime", disabled=not (v2 and att)):
             with sqlite3.connect(DB_FILE) as con:
                 q = ("select t.ciphertext,t.nonce,t.wrapped_dek,t.dek_nonce,t.kek_id from templates t join subjects s "

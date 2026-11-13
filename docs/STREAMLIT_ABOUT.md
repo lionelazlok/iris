@@ -6,5 +6,3 @@
 4. Toute action est inscrite dans un **journal chaîné** dont toute retouche est détectable.
 
 **Scénario conseillé** : enrôler `ALICE` (personne 1, photo 0) et `BOB` (personne 2, photo 0) → vérifier `ALICE` avec la personne 1, photo 2 (accepté) puis avec la personne 7 (refusé) → onglet *Attaques*, substituer le gabarit de BOB chez ALICE → vérifier `ALICE` avec la personne 2 : alerte → onglet *Audit* en rôle `auditor`.
-
-⚠️ Démonstration pédagogique : images synthétiques, clé de démonstration, et données éphémères sur l'hébergement gratuit.
